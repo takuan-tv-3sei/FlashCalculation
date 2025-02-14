@@ -12,6 +12,7 @@ createApp({
             result: null,
             showNumber: false,
             playing: false,
+            isFirst: true,
         };
     },
     methods: {
@@ -22,6 +23,7 @@ createApp({
             this.userAnswer = '';
             this.result = null;
             this.playing = true;
+            this.isFirst = false;
             this.showNumbers(0);
         },
         showNumbers(index) {
@@ -39,8 +41,11 @@ createApp({
             }
         },
         checkAnswer() {
-            const sum = this.numbers.reduce((a, b) => a + b, 0);
-            this.result = parseInt(this.userAnswer) === sum ? '正解!' : '不正解...\n答え: ' + sum;
+            if (!this.isFirst)
+            {
+                const sum = this.numbers.reduce((a, b) => a + b, 0);
+                this.result = parseInt(this.userAnswer) === sum ? '正解!' : '不正解...\n答え: ' + sum;
+            }
         }
     }
 }).mount('#app');
