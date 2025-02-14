@@ -30,7 +30,9 @@ createApp({
                 this.currentNumber = this.numbers[index];
                 setTimeout(() => {
                     this.showNumber = false;
-                    this.showNumbers(index + 1);
+                    setTimeout(() => {
+                        this.showNumbers(index + 1);
+                    }, 100);
                 }, this.interval);
             } else {
                 this.playing = false;
